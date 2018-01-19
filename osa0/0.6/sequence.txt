@@ -1,0 +1,24 @@
+kayttaja->selain:
+
+note left of selain:
+  käyttäjä kirjoittaa muistiinpanokenttään tekstin ja
+  painaa "talleta"
+end note
+
+note left of selain:
+  palvelimen spa.js skripti lisää jo tässä kohtaa uuden muistiinpanon
+  listaan ja näyttää sen käyttäjälle
+end note
+
+selain->palvelin: POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+
+note left of palvelin:
+  palvelin lisää muistiinpanon myös omaan tietokantaansa
+end note
+
+palvelin->selain: status 201 (Created)
+
+note left of selain:
+  selain tarkastaa vielä palvelimelta saadun statuksen
+  mahdollisten virheiden varalta
+end note
