@@ -51,11 +51,27 @@ const blogs = [
   }  
 ]
 
-describe('total likes', () => {
-  const listWithOneBlog = [blogs[0]]
+describe('favorite blog', () => {
+  test('favorite blog is undefined with empty list', () => {
+    const result = listHelper.favoriteBlog([])
+    expect(result).toBe(undefined)
+  })
 
+  test('favorite blog is one with most likes with non-empty list', () => {
+    const result = listHelper.favoriteBlog(blogs)
+    expect(result).toEqual(blogs[2])
+  })
+})
+
+describe('total likes', () => {
   test('when list has only one blog equals the likes of that', () => {
+    const listWithOneBlog = [blogs[0]]
     const result = listHelper.totalLikes(listWithOneBlog)
     expect(result).toBe(7)
+  })
+
+  test('when list has multiple blog equals the sum of likes', () => {
+    const result = listHelper.totalLikes(blogs)
+    expect(result).toBe(36)
   })
 })
